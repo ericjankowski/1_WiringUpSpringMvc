@@ -62,7 +62,7 @@
 				<include name="**/*.*" />
 			</fileset>
 		</war>
-		<copy todir="${deploy.path} preservelastmodified="true">
+		<copy todir="${deploy.path}" preservelastmodified="true">
 			<fileset dir=".">
 				<include name="*.war" />
 			</fileset>
@@ -76,7 +76,7 @@
 			<include name="catalina-ant.jar" />
 		</fileset>
 	</path>
-	<taskdef name="install" classname="org.apache.catalina.ant.InstallTask">
+	<taskdef name="install" classname="org.apache.catalina.ant.DeployTask">
 		<classpath refid="catalina-ant-classpath" />
 	</taskdef>
 	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
@@ -97,28 +97,28 @@
                 	 username="${tomcat.manager.username}"
                  	password="${tomcat.manager.password}"
                  	path="/${name}"
-                 	war="${name}"/>
+                 	war="${name}" />
     	</target>
 
     	<target name="reload" description="Reload application in Tomcat">
         	<reload url="${tomcat.manager.url}"
                 	 username="${tomcat.manager.username}"
                  	password="${tomcat.manager.password}"
-                 	path="/${name}"/>
+                 	path="/${name}" />
     	</target>
 
     	<target name="start" description="Start Tomcat application">
         	<start url="${tomcat.manager.url}"
                 	 username="${tomcat.manager.username}"
                  	password="${tomcat.manager.password}"
-                 	path="/${name}"/>
+                 	path="/${name}" />
     	</target>
 
     	<target name="stop" description="Stop Tomcat application">
         	<stop url="${tomcat.manager.url}"
                 	 username="${tomcat.manager.username}"
                  	password="${tomcat.manager.password}"
-                 	path="/${name}"/>
+                 	path="/${name}" />
     	</target>
 
     	<target name="list" description="List Tomcat applications">
@@ -129,5 +129,4 @@
 
 	<!-- ======== End Tomcat stuff =========== -->
 
-</project>
 </project>
